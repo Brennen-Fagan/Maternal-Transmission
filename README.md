@@ -8,7 +8,7 @@ Four files are included:
 3. Mathematica-DynSys.nb, by Brennen T. Fagan
 4. Mathematica-Figure5.nb, by Brennen T. Fagan
 
-C-README.txt includes the descriptions of the parameters required to use C-Simulations.c to recreate the images in the main text. After making any required modifications, you will need to compile C-Simulations.c and run the resulting output file. Note that demographic stochasticity can be a problem, which is why we provide random seeds in some locations.
+C-README.txt includes the descriptions of the parameters required to use C-Simulations.c to recreate the images in the main text. After making any required modifications (e.g. changing parameter values), you will need to compile C-Simulations.c and run the resulting output file. Note that demographic stochasticity will in theory lead to different results with each realisation, which is why we provide random seeds in some locations (i.e. to retain consistency with the specific results plotted in the paper).
 
 Mathematica code was last edited using Mathematica 12.1.1.0. We adopt the convention therein of referring to the populations by their (mean-field) densities. Variable names are generally the same as in the main text except as follows:
 
