@@ -5,13 +5,16 @@ Four files are included:
 
 1. C-README.txt, by Richard Law
 2. C-Simulations.c, by Richard Law
-3. Mathematica-DynSys.nb, by Brennen T. Fagan
-4. Mathematica-Figure5.nb, by Brennen T. Fagan
-5. Maternal_transmission_SI_code.nb, by George W. A. Constable
+3. C_code_20spp.c, By Richard Law
+4. Mathematica-DynSys.nb, by Brennen T. Fagan
+5. Mathematica-Figure5.nb, by Brennen T. Fagan
+6. Maternal_transmission_SI_code.nb, by George W. A. Constable
 
 C-README.txt includes the descriptions of the parameters required to use C-Simulations.c to recreate the images in the main text. After making any required modifications (e.g. changing parameter values), you will need to compile C-Simulations.c and run the resulting output file. Note that demographic stochasticity will in theory lead to different results with each realisation, which is why we provide random seeds in some locations (i.e. to retain consistency with the specific results plotted in the paper).
 
-Mathematica code was last edited using Mathematica 12.1.1.0. We adopt the convention therein of referring to the populations by their (mean-field) densities. Variable names are generally the same as in the main text except as follows:
+C_code_20spp.c is a modification of C-Simulations.c that expands the effective number of taxa in the microbiome. The taxa are again assumed to be independent of one another, so that the host fitness is 1 if there are no symbionts and the average of the symbiont induced fitnesses if any symbionts are present. To recreate Figure 3 in the paper, we use random seed 7597.
+
+Mathematica code by Brennen T. Fagan was last edited using Mathematica 12.1.1.0. We adopt the convention therein of referring to the populations by their (mean-field) densities. Variable names are generally the same as in the main text except as follows:
 
 1. x+ -> x
 2. x- -> y
