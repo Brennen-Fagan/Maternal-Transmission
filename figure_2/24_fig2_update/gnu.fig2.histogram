@@ -1,0 +1,138 @@
+#set terminal postscript portrait enhanced monochrome "Times-Roman" 12
+#set terminal postscript eps color "Arial" 12
+set terminal postscript landscape color "Arial" 12
+set output "fig2.gnuplot.histogram.ps"
+
+set border 	3
+set nokey
+set multiplot
+
+
+#SYMBIONT FITNESS DISTRIBUTiON
+set origin	0.0, 0.3
+set size	0.3, 0.4
+set label       "(a) symbiont pool" at 0.3,500 font ',14'
+set label	"harmful"    at 0.2,370 font ',12'
+set label	"beneficial" at 1.2,370 font ',12'
+set label       "symbiont sieve" at 0.5, -200 font ',14'
+set xlabel	"{/Times-Italic w}"
+set xrange	[0.0:2.0]
+set xtics	0, 0.5, 3
+set mxtics	1	
+set xtics	nomirror
+set ylabel	"Frequency"
+set yrange	[0.0:400.0]
+set ytics	0, 100, 600
+set nomytics	
+set ytics	nomirror
+set boxwidth 0.4 relative
+set style fill solid
+plot "../13_iterate_d_div_Wsym_sd_0.30_for_paper/00_symbiont_fitness_distribution/output.freq.distrib.dat" using 2:3 with boxes lc 'blue',\
+     "../13_iterate_d_div_Wsym_sd_0.30_for_paper/03_gaussian/output.gaussian.dat" using 1:2 with lines lt 1 lc rgb 'black',\
+     "../13_iterate_d_div_Wsym_sd_0.30_for_paper/line1.dat" using 1:2 with lines lt 3
+
+#plot "00_symbiont_fitness_distribution/output.freq.distrib.shift.dat" using 2:3 with boxes ,\
+     
+set nolabel
+
+
+#BIPARENTAL TRANSMISSION
+set origin	0.4, 0.5
+set size	0.3, 0.4
+#set label       "(b) biparental transmission" at 0.1,450 font ',14'
+set label 1     "biparental transmission" at 1,500 font ',14'
+set label 2     "(b)" at 0.2,400 font ',12'
+set xlabel	"{/Times-Italic w}"
+set xrange	[0.0:2.0]
+set xtics	0, 0.5, 3
+set mxtics	1
+set xtics	nomirror
+set ylabel	"Frequency"
+set yrange	[0.0:400.0]
+set ytics	0, 100, 600
+set nomytics	
+set ytics	nomirror
+set boxwidth 0.4 relative
+set style fill solid
+plot "../13_iterate_d_div_Wsym_sd_0.30_for_paper/01_biparental_transmission/output.freq.distrib.dat" using 2:3 with boxes lc 'blue',\
+     "../13_iterate_d_div_Wsym_sd_0.30_for_paper/03_gaussian/output.gaussian.dat" using 1:2 with lines lt 1 lc rgb 'black',\
+     "../13_iterate_d_div_Wsym_sd_0.30_for_paper/line1.dat"                                        using 1:2 with lines lt 3
+
+set nolabel
+
+
+#MATERNAL TRANSMISSION
+set origin	0.4, 0.0
+set size	0.3, 0.4
+#set label       "(c) maternal transmission" at 0.1,450 font ',14'
+set label 1     "maternal transmission" at 1,500 font ',14'
+set label 2     "(c)" at 0.2,400 font ',12'
+set xlabel	"{/Times-Italic w}"
+set xrange	[0.0:2.0]
+set xtics	0, 0.5, 3
+set mxtics	1
+set xtics	nomirror
+set ylabel	"Frequency"
+set yrange	[0.0:400.0]
+set ytics	0, 100, 600
+set nomytics	
+set ytics	nomirror
+set boxwidth 0.4 relative
+set style fill solid
+plot "../13_iterate_d_div_Wsym_sd_0.30_for_paper/02_maternal_transmission/output.freq.distrib.dat" using 2:3 with boxes lc 'blue',\
+     "../13_iterate_d_div_Wsym_sd_0.30_for_paper/03_gaussian/output.gaussian.dat" using 1:2 with lines lt 1 lc rgb 'black',\
+     "../13_iterate_d_div_Wsym_sd_0.30_for_paper/line1.dat"                                        using 1:2 with lines lt 3
+
+
+set nolabel
+
+ 
+#------------------------------------------------------------------------------------
+
+#TIMESERIES PLOTS
+
+set border	123
+
+#set key	at 16,3500 samplen 1.5
+set key		at 13,-2000 samplen 1.5
+
+
+#BIPARENTAL TRANSMISSION, w=0.6
+set origin	0.7, 0.5
+set size	0.35, 0.3
+#set label	"(d) biparental" at 3.5,2800 font ',14'
+set label	"(d) {/Times-Italic w} = 0.6" at 2.5,2600 font ',12'
+set xlabel	"time"
+set xrange	[0.0:10.0]
+set xtics	0, 5, 15
+set mxtics	5
+set xtics	nomirror
+set ylabel	"host population size" offset 1,0
+set yrange	[0.0:2500.0]
+set ytics	0,1000,3000
+set mytics	2
+set ytics	nomirror
+set y2label	"frequency" offset -3,0
+set y2range	[0:1.15]
+set y2tics	0,0.5,1
+set my2tics	5
+set ticslevel	0
+plot \
+"../14_timeser_d_div_Wsym_sd_0.30_for_paper/01_biparental_transmission/output.timeseries.Wsym_0.6.dat"	using 1:5  title 'number of hosts'  with lines lt 1 lw 1  lc rgb 'purple' axis x1y1,\
+"../14_timeser_d_div_Wsym_sd_0.30_for_paper/01_biparental_transmission/output.timeseries.Wsym_0.6.dat"	using 1:8  title 'frequency of symbiont'  with lines lt 4 lw 1	lc rgb 'green'	axis x1y2
+
+set nokey
+set nolabel
+#set noylabel
+
+#MATERNAL TRANSMISSION, w=0.6
+set origin	0.7, 0.0
+set size	0.35, 0.3
+set label	"(e)  {/Times-Italic w} = 0.6" at 2.5,2500 font ',12'
+set xlabel	"time"
+set y2label	"frequency" offset -3,0
+plot \
+"../14_timeser_d_div_Wsym_sd_0.30_for_paper/02_maternal_transmission/output.timeseries.Wsym_0.6.dat"  using 1:5 with lines lt 1 lw 1 lc rgb 'purple' axis x1y1,\
+"../14_timeser_d_div_Wsym_sd_0.30_for_paper/02_maternal_transmission/output.timeseries.Wsym_0.6.dat"  using 1:8 with lines lt 4 lw 1 lc rgb 'green'  axis x1y2
+
+set nolabel

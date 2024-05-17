@@ -1,0 +1,80 @@
+# set terminal postscript portrait enhanced monochrome "Times-Roman" 12
+# set output "evolution.ps"
+set terminal postscript eps color "Arial" 12 size 4,5 clip
+set size 0.75,0.57
+set output "fig4.evolution.eps"
+
+set parametric
+set autoscale
+
+set multiplot
+
+set noformat
+set nologscale
+set nokey
+set nolabel
+set notitle
+set nomytics
+set nomy2tics
+
+set border 123
+
+set key		at 12,2750 samplen 1.5
+
+#SYBIONT START 0.05, , MODIFIER START 0.20, w=0.6
+set origin      0.0, 0.22
+set size        0.8, 0.3
+set label 	"(a)" at 10,3000 font ',12'
+#set label 	"(a)" at 10,2800 font ',14'
+#set xlabel 	"time"
+set xrange 	[0.0:20.0]
+set xtics	0, 10, 100
+set mxtics	2
+set xtics	nomirror
+set ylabel 	"host population size" offset 0,0
+set yrange 	[0.0:2500.0]
+set ytics	0,1000,6000
+set mytics	2
+set ytics 	nomirror
+set y2label	"frequency" offset -2,0
+set y2range	[0:1.15]
+set y2tics	0,0.5,1
+set my2tics	5
+set ticslevel	0
+plot \
+"01_symstart_0.05_w_0.6/output.timeseries.dat"  using 1:5  title ' number of hosts'        with lines lt 1 lw 1 lc rgb 'purple' axis x1y1 ,\
+"01_symstart_0.05_w_0.6/output.timeseries.dat"  using 1:8  title ' frequency of community {/Times-Italic S}' with lines lt 4 lw 1 lc rgb 'green'  axis x1y2 ,\
+"01_symstart_0.05_w_0.6/output.timeseries.dat"  using 1:11 title " frequency of {/Times-Italic M^{/normal=10 {-}}}"      with lines lt 4 lw 1 lc rgb 'blue'   axis x1y2 
+
+set nolabel
+set noy2label
+set noy2tics
+set nokey
+
+unset border
+set border 123
+
+#SYBIONT START 0.05, MODIFIER START 0.20, w=0.6 DISEQUILBRIUM
+set origin      0.0, 0.0
+set size        0.71, 0.2
+set label 	"(b)" at 10, 0.15 font ',12' 
+set xlabel 	"time"
+set xrange 	[0.0:20.0]
+set xtics	0, 10, 100
+set mxtics	2
+set xtics	nomirror
+set ylabel	"D" offset 0,0
+set yrange	[-0.05:0.12]
+set ytics	-0.1,0.05,0.2
+set mytics	2
+#set y2range	[-0.05:0.12]
+#set y2tics	-0.1,0.05,0.2
+#set my2tics	2
+set ticslevel	0
+plot \
+"01_symstart_0.05_w_0.6/output.timeseries.dat"  using 1:16 with lines lt 4 lw 1 lc rgb 'orange'  axis x1y1 
+
+set nolabel
+set nokey
+
+set nomultiplot
