@@ -106,7 +106,7 @@ set noylabel
 set origin	0.14, 0.0
 set size	0.17, 0.37
 set label	"(c) t = 2" at 5,0.9 font ',12'
-set xlabel	"{number of microbial taxa per host}"
+set xlabel	"{number of symbiont taxa per host}"
 set xrange	[-0.5:20.5]
 set xtics	0, 10, 20
 set mxtics	1
